@@ -80,5 +80,4 @@ using TexturePtr = std::unique_ptr<SDL_Texture, SDLDeleters::TextureDeleter>;
 using FontPtr = std::unique_ptr<TTF_Font, SDLDeleters::FontDeleter>;
 
 } // namespace Utils
-} // namespace DXBall
- 
+} // namespace Game

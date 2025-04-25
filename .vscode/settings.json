@@ -3,7 +3,7 @@
     "cmake.buildDirectory": "${workspaceFolder}/build",
     "cmake.installPrefix": "${workspaceFolder}/dist/${command:cmake.activeKit}",
     "cmake.configureSettings": {
-        "GAME_NAME": "DXBall"
+        "GAME_NAME": "SampleGame"
     },
     "cmake.preferredGenerators": [
         "Ninja",
