@@ -12,7 +12,7 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "lldb",
-            "preLaunchTask": "SDL3 Build",
+            "preLaunchTask": "SDL3 Build MacOS",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for lldb",
