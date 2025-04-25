@@ -46,7 +46,49 @@ install_ubuntu_deps() {
         git \
         gcc \
         g++ \
-        gdb
+        gdb \
+        wget \
+        tar
+
+    echo -e "${GREEN}Installing SDL3 dependencies...${NC}"
+    sudo apt-get install -y \
+        libfreetype6-dev \
+        libjpeg-dev \
+        libpng-dev \
+        libwebp-dev \
+        libtiff-dev \
+        libfontconfig1-dev
+
+    echo -e "${GREEN}Building SDL3 from source...${NC}"
+    # Build SDL3 from the latest stable release
+    wget https://github.com/libsdl-org/SDL/releases/download/release-3.2.10/SDL3-3.2.10.tar.gz && \
+    tar xzf SDL3-3.2.10.tar.gz && \
+    cd SDL3-3.2.10 && \
+    cmake -S . -B build -DCMAKE_INSTALL_PREFIX=/usr && \
+    cmake --build build && \
+    sudo cmake --install build && \
+    cd .. && \
+    rm -rf SDL3-3.2.10 SDL3-3.2.10.tar.gz
+
+    echo -e "${GREEN}Building SDL3_image from source...${NC}"
+    # Build SDL3_image from source
+    git clone --depth 1 -b release-3.2.x https://github.com/libsdl-org/SDL_image.git && \
+    cd SDL_image && \
+    cmake -S . -B build -DCMAKE_INSTALL_PREFIX=/usr -DSDL3_DIR=/usr/lib/cmake/SDL3 && \
+    cmake --build build && \
+    sudo cmake --install build && \
+    cd .. && \
+    rm -rf SDL_image
+
+    echo -e "${GREEN}Building SDL3_ttf from source...${NC}"
+    # Build SDL3_ttf from source
+    git clone --depth 1 -b release-3.2.x https://github.com/libsdl-org/SDL_ttf.git && \
+    cd SDL_ttf && \
+    cmake -S . -B build -DCMAKE_INSTALL_PREFIX=/usr -DSDL3_DIR=/usr/lib/cmake/SDL3 && \
+    cmake --build build && \
+    sudo cmake --install build && \
+    cd .. && \
+    rm -rf SDL_ttf
 
     echo -e "${GREEN}Installing Docker dependencies...${NC}"
     # Remove any conflicting packages first

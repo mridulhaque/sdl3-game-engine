@@ -20,7 +20,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/include/SDL3",
-                "/usr/local/include/SDL3"
+                "/usr/include/SDL3_image",
+                "/usr/include/SDL3_ttf"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",
