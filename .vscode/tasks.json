@@ -1,0 +1,50 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "SDL3 Build",
+            "type": "shell",
+            "command": "./build.sh --clean --install --name ${workspaceFolderBasename} --platform macos",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "windows": {
+                "options": {
+                    "shell": {
+                        "executable": "bash.exe",
+                        "args": ["-c"]
+                    }
+                }
+            }
+        },
+        {
+            "label": "SDL3 Build Linux",
+            "type": "shell",
+            "command": "./build.sh --clean --install --name ${workspaceFolderBasename} --platform linux --docker",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "linux": {
+                "options": {
+                    "env": {
+                        "CC": "gcc",
+                        "CXX": "g++"
+                    }
+                }
+            }
+        }
+    ]
+}
